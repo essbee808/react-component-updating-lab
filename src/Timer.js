@@ -11,6 +11,21 @@ class Timer extends Component {
   }
 
   //Your code here
+  // change the font color randomly
+  // method below fires every time the component updates
+  componentDidUpdate() {
+    this.timer.current.style.color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+  }
+
+  // the only time we need to update is when this.state.time changes
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.time === nextState.time) {
+      return false
+    }
+    return true
+  }
+
+
 
   componentDidMount() {
     this.interval = setInterval(
